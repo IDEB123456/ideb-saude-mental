@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-T">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDEB - Saúde Mental: Visão e Estratégia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Visualization & Content Choices:
+        - Visão/Expansão: Report Info: 5-stage geographic expansion. Goal: Inform on growth. Viz/Method: HTML/CSS stepped diagram. Interaction: Visual flow. Justification: More engaging than a list.
+        - Estratégia/CRP Critique: Report Info: Partnerships, CRP issues. Goal: Explain approach & context. Viz/Method: Styled text blocks, clear separation. Interaction: None. Justification: Clarity.
+        - Papel do IDEB: Report Info: Complements academia, fills CFP gap. Goal: Position IDEB. Viz/Method: Concise text blocks with icons. Interaction: None. Justification: Direct.
+        - Iniciativas/Congresso: Report Info: Congress details, Seal. Goal: Showcase actions. Viz/Method: Event-like card for congress, descriptive text for seal. Interaction: None. Justification: Clear presentation of deliverables.
+        CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f7f4; /* Warm Neutral: Light Beige */
+            color: #3d3b30; /* Darker Neutral for text */
+        }
+        .nav-link {
+            @apply px-4 py-2 text-sm font-medium text-gray-700 hover:text-teal-600 transition-colors duration-200;
+        }
+        .active-nav-link {
+            @apply text-teal-700 border-b-2 border-teal-700;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-teal-800 mb-6 text-center;
+        }
+        .card {
+            @apply bg-white p-6 rounded-lg shadow-lg transition-shadow duration-300 hover:shadow-xl;
+        }
+        .expansion-step {
+            @apply flex items-center p-4 bg-stone-100 rounded-lg shadow-md mb-3;
+        }
+        .expansion-number {
+            @apply flex-shrink-0 w-10 h-10 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold text-lg mr-4;
+        }
+        .accent-text {
+            color: #0D9488; /* Teal accent */
+        }
+        .section-intro {
+            @apply text-lg text-gray-700 mb-8 max-w-3xl mx-auto text-center;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <h1 class="text-2xl font-bold text-teal-700">IDEB Saúde Mental</h1>
+            <nav class="mt-4 sm:mt-0">
+                <a href="#visao" class="nav-link active-nav-link" data-target="visao">Visão e Abrangência</a>
+                <a href="#estrategia" class="nav-link" data-target="estrategia">Estratégia</a>
+                <a href="#papel" class="nav-link" data-target="papel">O Papel do IDEB</a>
+                <a href="#iniciativas" class="nav-link" data-target="iniciativas">Iniciativas</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="visao" class="py-16">
+            <h2 class="section-title">Visão e Abrangência do IDEB</h2>
+            <p class="section-intro">
+                Esta seção delineia o objetivo primordial do IDEB e sua ambiciosa trajetória de expansão. O IDEB aspira a se consolidar como uma instituição de referência em Saúde Mental, começando localmente e crescendo para um impacto em toda a América Latina.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="card">
+                    <h3 class="text-2xl font-semibold text-teal-700 mb-4">Objetivo Principal</h3>
+                    <p class="text-gray-700 text-lg">
+                        O IDEB deve se tornar uma <strong class="accent-text">referência em Saúde Mental</strong>.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3 class="text-2xl font-semibold text-teal-700 mb-4">Expansão Geográfica Sequencial</h3>
+                    <div class="space-y-3">
+                        <div class="expansion-step">
+                            <div class="expansion-number">1</div>
+                            <p class="text-gray-700">Agreste Pernambucano</p>
+                        </div>
+                        <div class="expansion-step">
+                            <div class="expansion-number">2</div>
+                            <p class="text-gray-700">Pernambuco</p>
+                        </div>
+                        <div class="expansion-step">
+                            <div class="expansion-number">3</div>
+                            <p class="text-gray-700">Nordeste</p>
+                        </div>
+                        <div class="expansion-step">
+                            <div class="expansion-number">4</div>
+                            <p class="text-gray-700">Brasil</p>
+                        </div>
+                        <div class="expansion-step">
+                            <div class="expansion-number">5</div>
+                            <p class="text-gray-700">América Latina</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="estrategia" class="py-16 bg-stone-50 rounded-lg">
+            <h2 class="section-title">Estratégia de Implementação</h2>
+            <p class="section-intro">
+                Aqui detalhamos como o IDEB planeja alcançar seus objetivos. A estratégia se baseia em colaborações institucionais e acadêmicas, ao mesmo tempo que reconhece e busca superar os desafios atuais no campo da psicologia.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-2xl font-semibold text-teal-700 mb-4">Pilares da Estratégia</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>
+                            <strong>Apoio Institucional:</strong> Buscar apoio do Conselho Regional de Psicologia (CRP).
+                        </li>
+                        <li>
+                            <strong>Parcerias Acadêmicas:</strong> Estabelecer parcerias com diversas faculdades, incluindo a Maurício de Nassau e outras.
+                        </li>
+                    </ul>
+                </div>
+                <div class="card bg-amber-50 border-l-4 border-amber-500">
+                    <h3 class="text-2xl font-semibold text-amber-700 mb-4">Contexto e Desafios (Crítica ao CRP)</h3>
+                    <p class="text-gray-700">
+                        O Conselho Regional de Psicologia, além de cobrar anuidade, não tem criado congressos nem desenvolvido a psicologia. Essa inação tem levado à perda de credibilidade da psicologia no mercado, com psicanalistas e terapeutas assumindo a dianteira. O IDEB surge como uma resposta a essa lacuna.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="papel" class="py-16">
+            <h2 class="section-title">O Papel do IDEB na Psicologia</h2>
+            <p class="section-intro">
+                O IDEB se posiciona como uma força transformadora na psicologia, buscando complementar a formação acadêmica tradicional e preencher lacunas deixadas por órgãos reguladores. O foco é aprofundar a intervenção psicoterapêutica para o bem-estar humano.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card">
+                     <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">🎓</span>
+                        <h3 class="text-2xl font-semibold text-teal-700">Complementaridade à Academia</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        As faculdades de psicologia oferecem apenas "a ponta do iceberg" da intervenção psicoterapêutica, que busca amenizar o sofrimento e maximizar a transformação humana. O IDEB visa aprofundar essa prática.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">🧩</span>
+                        <h3 class="text-2xl font-semibold text-teal-700">Preenchimento de Lacunas Institucionais</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        O IDEB se propõe a fazer o papel que o Conselho Federal de Psicologia (CFP) deveria estar fazendo, fomentando o desenvolvimento e a valorização da profissão.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="iniciativas" class="py-16 bg-teal-50 rounded-lg">
+            <h2 class="section-title !text-teal-900">Iniciativas e Propostas do IDEB</h2>
+            <p class="section-intro !text-gray-800">
+                Para concretizar sua visão, o IDEB planeja ações específicas que visam promover o conhecimento, a excelência profissional e o fortalecimento da saúde mental na região. Conheça as primeiras grandes iniciativas.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">🗓️</span>
+                        <h3 class="text-2xl font-semibold text-teal-700">Primeiro Congresso de Psicologia e Saúde Mental</h3>
+                    </div>
+                    <p class="text-gray-700 mb-2">
+                        Um marco para o Agreste Pernambucano, fomentando a discussão e o avanço na área.
+                    </p>
+                    <p class="text-gray-700"><strong>Data Sugerida:</strong> <strong class="accent-text">6 de Novembro</strong></p>
+                    <p class="text-gray-700"><strong>Local:</strong> Agreste Pernambucano</p>
+                </div>
+                <div class="card">
+                     <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">🏅</span>
+                        <h3 class="text-2xl font-semibold text-teal-700">Selo IDEB de Excelência</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        Desenvolver um selo "IDEB" para psicólogos. O profissional que não possuir o selo IDEB não será considerado um profissional de excelência, incentivando a qualificação contínua.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-stone-800 text-stone-300 py-8 text-center">
+        <p>&copy; 2025 IDEB Saúde Mental. Todos os direitos reservados.</p>
+        <p class="text-sm">Promovendo a transformação humana através da excelência em saúde mental.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('nav a.nav-link');
+            const sections = document.querySelectorAll('main section');
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 80, // Adjust for sticky header height
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Active link highlighting on scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.4 // Adjust this value for when the link becomes active
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active-nav-link');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active-nav-link');
+                            }
+                        });
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+
+</body>
+</html>
