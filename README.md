@@ -118,6 +118,7 @@
                 <a href="#estrategia" class="nav-link" data-target="estrategia">Estratégia</a>
                 <a href="#papel" class="nav-link" data-target="papel">Nosso Papel</a>
                 <a href="#iniciativas" class="nav-link" data-target="iniciativas">Iniciativas</a>
+                <a href="#telepsicologia" class="nav-link" data-target="telepsicologia">Telepsicologia</a>
                 <a href="#estatisticas" class="nav-link" data-target="estatisticas">Estatísticas</a>
             </nav>
         </div>
@@ -246,7 +247,31 @@
             </div>
         </section>
 
-        <section id="estatisticas" class="py-16 fade-in">
+        <section id="telepsicologia" class="py-16 fade-in">
+            <h2 class="section-title">Telepsicologia <span class="ideb-highlight">IDEB</span>: Acesso Ampliado e Sofisticado</h2>
+            <p class="section-intro">
+                O **<span class="ideb-highlight">IDEB</span>** inova ao lançar a **primeira plataforma sofisticada de telepsicologia do Agreste Pernambucano**. Com ela, profissionais e pacientes terão acesso a um serviço de alta qualidade, segurança e praticidade, superando barreiras geográficas e promovendo o bem-estar mental em qualquer lugar.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card text-center">
+                    <div class="text-5xl mb-4">🌐</div>
+                    <h3 class="text-xl font-semibold text-teal-400 mb-2">Acesso Sem Barreiras</h3>
+                    <p class="text-gray-300 text-sm">Conecte-se com seu terapeuta de qualquer lugar, a qualquer momento.</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-5xl mb-4">🔒</div>
+                    <h3 class="text-xl font-semibold text-teal-400 mb-2">Segurança e Privacidade</h3>
+                    <p class="text-gray-300 text-sm">Plataforma robusta, garantindo a confidencialidade das sessões.</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-5xl mb-4">✨</div>
+                    <h3 class="text-xl font-semibold text-teal-400 mb-2">Qualidade Comprovada</h3>
+                    <p class="text-gray-300 text-sm">Profissionais com o padrão de excelência **IDEB** ao seu alcance.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="estatisticas" class="py-16 bg-slate-900 rounded-lg fade-in">
             <h2 class="section-title">O Desafio da Ansiedade e a Solução <span class="ideb-highlight">IDEB</span></h2>
             <p class="section-intro">
                 Os dados da Organização Pan-Americana da Saúde (OPAS/OMS) e as estimativas do IBGE (2024) revelam um cenário desafiador: **milhões de pessoas sofrem com transtornos de ansiedade no Brasil.** No Agreste Pernambucano, esse quantitativo de indivíduos ansiosos está ativamente buscando por **profissionais de Saúde Mental de excelência**. É aqui que o **<span class="ideb-highlight">IDEB</span>** entra.
@@ -274,177 +299,4 @@
             const navLinks = document.querySelectorAll('nav a.nav-link');
             const sections = document.querySelectorAll('main section');
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-
-                    if (targetSection) {
-                        window.scrollTo({
-                            top: targetSection.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.4
-            };
-
-            const observerCallback = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('active-nav-link');
-                            if (link.getAttribute('href').substring(1) === entry.target.id) {
-                                link.classList.add('active-nav-link');
-                            }
-                        });
-                    }
-                });
-            };
-
-            const observer = new IntersectionObserver(observerCallback, observerOptions);
-            sections.forEach(section => observer.observe(section));
-
-            // Chart.js Initialization
-            const ctx = document.getElementById('anxietyChart').getContext('2d');
-            const anxietyChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Brasil', 'Agreste Pernambucano'],
-                    datasets: [{
-                        label: 'Pessoas Afetadas (Milhões)',
-                        data: [19.77, 0.186],
-                        backgroundColor: [
-                            'rgba(45, 212, 191, 0.8)',
-                            'rgba(6, 182, 212, 0.8)'
-                        ],
-                        borderColor: [
-                            'rgba(45, 212, 191, 1)',
-                            'rgba(6, 182, 212, 1)'
-                        ],
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Percentual da População (%)',
-                        data: [9.3, 9.3],
-                        backgroundColor: [
-                            'rgba(14, 165, 233, 0.6)',
-                            'rgba(34, 197, 94, 0.6)'
-                        ],
-                        borderColor: [
-                            'rgba(14, 165, 233, 1)',
-                            'rgba(34, 197, 94, 1)'
-                        ],
-                        borderWidth: 1,
-                        type: 'line',
-                        yAxisID: 'percentageAxis',
-                        tension: 0.3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: '#e0f2fe'
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed.y !== null) {
-                                        if (context.dataset.label.includes('Milhões')) {
-                                            label += context.parsed.y.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 3 }) + ' milhões de pessoas';
-                                        } else {
-                                            label += context.parsed.y + '% da população';
-                                        }
-                                    }
-                                    return label;
-                                },
-                                title: function(context) {
-                                    const title = context[0].label;
-                                    if (title.length > 16) {
-                                        return title.match(/.{1,16}/g);
-                                    }
-                                    return title;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Número de Pessoas Afetadas (Milhões)',
-                                color: '#e0f2fe'
-                            },
-                            ticks: {
-                                color: '#e0f2fe',
-                                callback: function(value) {
-                                    return value + 'M';
-                                }
-                            },
-                            grid: {
-                                color: 'rgba(224, 242, 254, 0.1)'
-                            }
-                        },
-                        percentageAxis: {
-                            type: 'linear',
-                            position: 'right',
-                            beginAtZero: true,
-                            max: 100,
-                            title: {
-                                display: true,
-                                text: 'Percentual da População (%)',
-                                color: '#e0f2fe'
-                            },
-                            ticks: {
-                                color: '#e0f2fe',
-                                callback: function(value) {
-                                    return value + '%';
-                                }
-                            },
-                            grid: {
-                                drawOnChartArea: false,
-                                color: 'rgba(224, 242, 254, 0.1)'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Região',
-                                color: '#e0f2fe'
-                            },
-                            ticks: {
-                                color: '#e0f2fe',
-                                callback: function(value, index, values) {
-                                    const label = this.getLabelForValue(value);
-                                    if (label.length > 16) {
-                                        return label.match(/.{1,16}/g);
-                                    }
-                                    return label;
-                                }
-                            },
-                            grid: {
-                                color: 'rgba(224, 242, 254, 0.1)'
-                            }
-                        }
-                    }
-                });
-            });
-        </script>
-
-    </body>
-    </html>
+            navLinks.
