@@ -1,3 +1,5 @@
+HTML
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -299,4 +301,178 @@
             const navLinks = document.querySelectorAll('nav a.nav-link');
             const sections = document.querySelectorAll('main section');
 
-            navLinks.
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.4
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active-nav-link');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active-nav-link');
+                            }
+                        });
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            sections.forEach(section => observer.observe(section));
+
+            // Chart.js Initialization
+            const ctx = document.getElementById('anxietyChart').getContext('2d');
+            const anxietyChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Brasil', 'Agreste Pernambucano'],
+                    datasets: [{
+                        label: 'Pessoas Afetadas (Milhões)',
+                        data: [19.77, 0.186],
+                        backgroundColor: [
+                            'rgba(45, 212, 191, 0.8)',
+                            'rgba(6, 182, 212, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgba(45, 212, 191, 1)',
+                            'rgba(6, 182, 212, 1)'
+                        ],
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Percentual da População (%)',
+                        data: [9.3, 9.3],
+                        backgroundColor: [
+                            'rgba(14, 165, 233, 0.6)',
+                            'rgba(34, 197, 94, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(14, 165, 233, 1)',
+                            'rgba(34, 197, 94, 1)'
+                        ],
+                        borderWidth: 1,
+                        type: 'line',
+                        yAxisID: 'percentageAxis',
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#e0f2fe'
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        if (context.dataset.label.includes('Milhões')) {
+                                            label += context.parsed.y.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 3 }) + ' milhões de pessoas';
+                                        } else {
+                                            label += context.parsed.y + '% da população';
+                                        }
+                                    }
+                                    return label;
+                                },
+                                title: function(context) {
+                                    const title = context[0].label;
+                                    if (title.length > 16) {
+                                        return title.match(/.{1,16}/g);
+                                    }
+                                    return title;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Número de Pessoas Afetadas (Milhões)',
+                                color: '#e0f2fe'
+                            },
+                            ticks: {
+                                color: '#e0f2fe',
+                                callback: function(value) {
+                                    return value + 'M';
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(224, 242, 254, 0.1)'
+                            }
+                        },
+                        percentageAxis: {
+                            type: 'linear',
+                            position: 'right',
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Percentual da População (%)',
+                                color: '#e0f2fe'
+                            },
+                            ticks: {
+                                color: '#e0f2fe',
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            },
+                            grid: {
+                                drawOnChartArea: false,
+                                color: 'rgba(224, 242, 254, 0.1)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Região',
+                                color: '#e0f2fe'
+                            },
+                            ticks: {
+                                color: '#e0f2fe',
+                                callback: function(value, index, values) {
+                                    const label = this.getLabelForValue(value);
+                                    if (label.length > 16) {
+                                        return label.match(/.{1,16}/g);
+                                    }
+                                    return label;
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(224, 242, 254, 0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
